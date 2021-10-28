@@ -5,7 +5,7 @@ def h(x,n,q):
     q *= R
     return q
 
-def k(x,eps):
+def k(x,eps,d,x2):
     n=0
     q=-x
     s=q
@@ -18,7 +18,8 @@ def k(x,eps):
         else:
             break
     print(str(round(x,1)) + '     ' + str(math.pi / 2 - math.atan(x)) + '    ' + str(s + math.pi / 2) + '     ' + str(n))
-    return s+math.pi/2
+    if x<x2:
+        k(x + d, eps, d)
 
 def main():
     x1 = float(input('x1='))
@@ -27,10 +28,7 @@ def main():
     eps = float(input('eps='))
     x = x1
     print('X=            Ctg=                 S=                   n=')
-    while x<=x2:
-        k(x,eps)
-        x+=d
-
+    k(x,eps,d,x2)
 
 if __name__=='__main__':
     main()
